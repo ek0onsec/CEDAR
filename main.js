@@ -1,0 +1,1 @@
+import esriConfig from "@arcgis/core/config";

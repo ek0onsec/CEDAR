@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #chartdiv {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chartdiv"></div>
+
+</body>
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="main.js"></script>
+<script>
+        esriConfig.apiKey = "AAPKc74b21aa933c44c4970c4599a53a0382cy_9-XfEvRLPQsFg7_khnJTTA12pBO79l5_jkFP_M4GGBHE1vaEQB1i7cLZW2soU"; // Clé API
+
+
+        am4core.ready(function () {
+
+// Themes begin
+            am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+            var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+// Add data
+
+
+            chart.data = [{
+                "country": "Moins de 26 ans",
+                "litres": 28
+            }, {
+                "country": "De 26 à 40 ans",
+                "litres": 70
+            }, {
+                "country": "De 41 à 50 ans",
+                "litres": 36
+            }, {
+                "country": "Plus de 50 ans",
+                "litres": 24
+            }];
+
+// Add and configure Series
+            var pieSeries = chart.series.push(new am4charts.PieSeries());
+            pieSeries.dataFields.value = "litres";
+            pieSeries.dataFields.category = "country";
+            pieSeries.slices.template.stroke = am4core.color("#fff");
+            pieSeries.slices.template.strokeWidth = 2;
+            pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+            pieSeries.hiddenState.properties.opacity = 1;
+            pieSeries.hiddenState.properties.endAngle = -90;
+            pieSeries.hiddenState.properties.startAngle = -90;
+
+        }); // end am4core.ready()
+
+
+</script>
+</html>
+
